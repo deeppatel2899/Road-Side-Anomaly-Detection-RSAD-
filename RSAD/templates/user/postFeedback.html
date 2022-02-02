@@ -1,0 +1,64 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+
+
+
+<div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; width:80%;height:50%">
+
+    <form id="myForm" action="/user/postFeedback" enctype="multipart/form-data" method="POST">
+        </br>
+        <h1 class="display-4 mb-10 text-center text-white">Post Feedback</h1></br>
+        <div class="form-row">
+            <div class="col-md-2 form-group">
+                <h5 class="text-white "> Subject : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <input id="sub" class="form-control" placeholder="Subject" name="feedbackSubject" type="text" required>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-2 form-group">
+                <h5 class="text-white "> Feedback : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <textarea id="desc" name="feedbackDescription" cols="20" rows="4" placeholder="Description"
+                    required></textarea>
+            </div>
+
+        </div>
+        <div class="form-row">
+
+            <div class="stars">
+
+                <input class="star star-5" id="star-5" type="radio" name="feedbackRating" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="feedbackRating" value="4" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="feedbackRating" value="3"/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="feedbackRating" value="2"/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="feedbackRating" value="1" />
+                <label class="star star-1" for="star-1"></label>
+
+            </div>
+
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+            </div>
+            <div class="col-md-6 form-group">
+                <button style="margin-right:auto;" class="btn btn-secondary btn-block w-200p"
+                    type="reset">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+{%endblock%}

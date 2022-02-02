@@ -1,0 +1,49 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+
+
+<div>
+
+	<table class="  table-dark table-bordered table-sm th" id="dataTable" width="100%" cellspacing="0">
+		<thead style="text-align: center;background: #1f292d;font-size: 18px;">
+			<tr>
+				<th>Complain Subject</th>
+				<th>Complain Description</th>
+				<th>Complain From</th>
+				<th>Complain Date</th>
+				<th>Complain Time</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{%for row in complainVOList%}
+			<tr>
+				<td>{{row['complainSubject']}}</td>
+				<td>{{row['complainDescription']}}</td>
+				<td>{{row['complainFromLogin']}}</td>
+				<td>{{row['complainDate']}}</td>
+				<td>{{row['complainTime']}}</td>
+
+				<td>
+					{%if row['complainFilepath'] or row['replyFilepath'] %}
+					<a href="/{{row['complainFilepath']}}" target="_blank"><i class="fa fa-file"
+							style="font-size:20px;color: #88c241;""></i></a>
+          			<a href=" /admin/deleteComplain?complainId={{row['complainId']}}&complainFilepath={{row['complainFilepath']}}&replyFilepath={{row['replyFilepath']}}"><i
+								class="fa fa-trash" style="font-size:20px;color: #88c241;""></i></a>
+            		<a href=" /admin/loadReply?complainId={{row['complainId']}}" target="_blank"><i class="fa fa-pencil-square-o"
+									style="font-size:20px;color: #88c241;""></i></a>
+          			{%else%}
+          			<a href=" /admin/deleteComplain?complainId={{row['complainId']}}"><i class="fa fa-trash"
+										style="font-size:20px;color: #88c241;""></i></a>
+					<a href=" /admin/loadReply?complainId={{row['complainId']}}" target="_blank"><i class="fa fa-pencil-square-o"
+											style="font-size:20px;color: #88c241;""></i></a>
+          {%endif%}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

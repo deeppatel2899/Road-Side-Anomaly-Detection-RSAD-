@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>RSAD Dashboard</title>
+        <meta name="description" content="A responsive bootstrap 4 admin dashboard template by RSAD" />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
+        <link rel="icon" href="favicon.ico" type="{{ url_for('static', filename='img/x-icon')}}">
+        <link href="{{ url_for('static', filename='css/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet"
+            type="text/css" />
+        <link href="{{ url_for('static', filename='css/toggles.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/toggles-light.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" type="text/css">
+
+
+
+
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div class="preloader-it">
+            <div class="loader-pendulums"></div>
+        </div>
+        <!-- /Preloader -->
+
+        <div class="hk-wrapper hk-vertical-nav">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
+                <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span
+                        class="feather-icon"><i data-feather="menu"></i></span></a>
+
+                <ul class="navbar-nav hk-navbar-content">
+                    <li class="nav-item">
+                        <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><span
+                                class="feather-icon"><i data-feather="search"></i></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><span
+                                class="feather-icon"><i data-feather="settings"></i></span></a>
+                    </li>
+
+                    <li class="nav-item dropdown dropdown-authentication">
+                        <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <div class="media">
+                                <div class="media-img-wrap">
+                                    <div class="avatar">
+                                        <img src="{{ url_for('static', filename='img/thunder.png')}}" alt="user"
+                                            class="avatar-img rounded-circle">
+                                    </div>
+                                    <span class="badge badge-success badge-indicator"></span>
+                                </div>
+                                <div class="media-body">
+                                    <span>BlackThunder<i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX"
+                            data-dropdown-out="flipOutX">
+                            <!-- <a class="dropdown-item" href="profile.html"><i
+                                    class="dropdown-icon fa fa-user" style="font-size: 20px;color: #505050;"></i><span>Profile</span></a> -->
+                            <!-- <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My
+                                    balance</span></a> -->
+                            <!-- <a class="dropdown-item" href="inbox.html"><i
+                                    class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a> -->
+                            <!-- <a class="dropdown-item" href="#"><i
+                                    class="dropdown-icon fa fa-gear" style="font-size: 20px;color: #505050;"></i><span>Settings</span></a>
+                            <div class="dropdown-divider"></div> -->
+
+                            <!-- <div class="dropdown-divider"></div> -->
+                            <a class="dropdown-item" href="/admin/logoutSession"><i
+                                    class="dropdown-icon fa fa-power-off" style="font-size: 20px;color: red;"></i><span>Log out</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <form role="search" class="navbar-search">
+                <div class="position-relative">
+                    <a href="javascript:void(0);" class="navbar-search-icon"><span class="feather-icon"><i
+                                data-feather="search"></i></span></a>
+                    <input type="text" name="example-input1-group2" class="form-control"
+                        placeholder="Type here to Search">
+                    <a id="navbar_search_close" class="navbar-search-close" href="#"><span class="feather-icon"><i
+                                data-feather="x"></i></span></a>
+                </div>
+            </form>
+            <!-- /Top Navbar -->
+
+            <!-- Vertical Nav -->
+            <nav class="hk-nav hk-nav-light">
+                <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i
+                            data-feather="x"></i></span></a>
+                <div class="nicescroll-bar">
+                    <div class="navbar-nav-wrap">
+                        <ul class="navbar-nav flex-column">
+
+                            <div class="nav-header">
+                                <span>
+                                    <h6>Admin Panel</h6>
+                                </span>
+                                <span>
+                                    <h6>AP</h6>
+                                </span>
+                            </div>
+                            <ul class="navbar-nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="/admin/viewUsers">
+                                        <span class="feather-icon"><i class="fa fa-users" style="font-size:20px;color: #505050;"></i></span>
+                                        <span class="nav-link-text"> Manage Users</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse"
+                                        data-target="#content_drp">
+                                        <span class="feather-icon"><i class="fa fa-map" style="font-size:20px;color: #505050;"></i></span>
+                                        <span class="nav-link-text">Manage Area</span>
+                                    </a>
+                                    <ul id="content_drp" class="nav flex-column collapse collapse-level-1">
+                                        <li class="nav-item">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/loadArea">Add Area</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/viewArea">View Area</a>
+
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse"
+                                        data-target="#utilities_drp">
+                                        <span class="feather-icon"><i class="fa fa-crosshairs" style="font-size:20px;color: #505050;"></i></span>
+                                        <span class="nav-link-text">Manage CrossRoad</span>
+                                    </a>
+                                    <ul id="utilities_drp" class="nav flex-column collapse collapse-level-1">
+                                        <li class="nav-item">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/loadCrossroad">Add CrossRoad</a>
+
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/viewCrossroad">View CrossRoad</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/viewVideo">
+                                        <span class="feather-icon"><i class="fa fa-file-movie-o" style="font-size:20px;color: #505050;"></i></i></span>
+                                        <span class="nav-link-text"> Manage Videos</span>
+                                    </a>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse"
+                                        data-target="#tables_drp">
+                                        <span class="feather-icon"><i class="fa fa-credit-card" style="font-size:20px;color: #505050;"></i></span>
+                                        <span class="nav-link-text">Manage Challan</span>
+                                    </a>
+                                    <ul id="tables_drp" class="nav flex-column collapse collapse-level-1">
+                                        <li class="nav-item">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="basic-table.html">View Detection</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="data-table.html">Edit Detection</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/viewComplain">
+                                        <span class="feather-icon"><i class="fa fa-pencil-square-o" style="font-size:20px;color: #505050;"></i></span>
+                                        <span class="nav-link-text">Manage Complain</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/viewFeedback">
+                                        <span class="feather-icon"><i class="fa fa-pencil-square-o" style="font-size:20px;color: #505050;"></i></span>
+                                        <span class="nav-link-text">Manage Feedback</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                    </div>
+                </div>
+            </nav>
+            <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+            <!-- /Vertical Nav -->
+            <!-- Setting Panel -->
+            <div class="hk-settings-panel">
+                <div class="nicescroll-bar position-relative">
+                    <div class="settings-panel-wrap">
+                        <div class="settings-panel-head">
+                            <img class="brand-img d-inline-block align-top" src="adminresources/image/logo-light.png"
+                                alt="brand" />
+                            <a href="javascript:void(0);" id="settings_panel_close" class="settings-panel-close"><span
+                                    class="feather-icon"><i data-feather="x"></i></span></a>
+                        </div>
+
+                        <hr>
+                        <h6 class="mb-5">Navigation</h6>
+
+                        <div class="button-list hk-nav-select mb-10">
+                            <button type="button" id="nav_light_select"
+                                class="btn  btn-outline-primary  btn-sm btn-wth-icon icon-wthot-bg"><span
+                                    class="icon-label"><i class="fa fa-sun-o"></i> </span><span class="btn-text">Light
+                                    Mode</span></button>
+                            <button type="button" id="nav_dark_select"
+                                class="btn btn-outline-light btn-sm btn-wth-icon icon-wthot-bg"><span
+                                    class="icon-label"><i class="fa fa-moon-o"></i> </span><span class="btn-text">Dark
+                                    Mode</span></button>
+                        </div>
+                        <hr>
+                        <h6 class="mb-5">Top Nav</h6>
+
+                        <div class="button-list hk-navbar-select mb-10">
+                            <button type="button" id="navtop_light_select"
+                                class="btn btn-outline-light btn-sm btn-wth-icon icon-wthot-bg"><span
+                                    class="icon-label"><i class="fa fa-sun-o"></i> </span><span class="btn-text">Light
+                                    Mode</span></button>
+                            <button type="button" id="navtop_dark_select"
+                                class="btn btn-outline-primary btn-sm btn-wth-icon icon-wthot-bg"><span
+                                    class="icon-label"><i class="fa fa-moon-o"></i> </span><span class="btn-text">Dark
+                                    Mode</span></button>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6>Scrollable Header</h6>
+                            <div
+                                class="toggle toggle-sm toggle-simple toggle-light toggle-bg-primary scroll-nav-switch">
+                            </div>
+                        </div>
+                        <button id="reset_settings" class="btn btn-primary btn-block btn-reset mt-30">Reset</button>
+                    </div>
+                </div>
+                <img class="d-none" src="adminresources/image/logo-light.png" alt="brand" />
+                <img class="d-none" src="adminresources/image/logo-dark.png" alt="brand" />
+            </div>
+            <!-- /Setting Panel -->
+
+            <div class="nicescroll-bar">
+                <div class="hk-pg-wrapper bg-dark ">
+
+                    {% block content %}{% endblock %}
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.slimscroll.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/dropdown-bootstrap-extended.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/feather.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/toggles.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/toggle-data.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.counterup.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/raphael.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/morris.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/echarts-en.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sparkline.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery-jvectormap-2.0.3.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery-jvectormap-world-mill-en.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/vectormap-data.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.toast.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/init.js')}}"></script>
+        <!--script src="{{ url_for('static', filename='js/dashboard-data.js')}}"></script-->
+
+    </body>
+
+</html>

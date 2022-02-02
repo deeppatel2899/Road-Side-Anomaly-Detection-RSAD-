@@ -1,0 +1,137 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+
+<div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; width:80%;height:50%">
+    {% if challanVOList %}
+    <form action="/admin/updateChallan" method="post">
+        </br>
+        <h1 class="display-4 mb-10 text-center text-white">Edit Challan</h1></br>
+        {%for row in challanVOList%}
+        <input type="hidden" name="ChallanId" value="{{row[1]['ChallanId']}}">
+        <div class="form-row">
+            <div class="col-md-4 form-group">
+                <h5 class="text-white"> Owner Name : </h5>
+            </div>
+
+            <div class="col-md-5 form-group">
+
+                <input class="form-control" placeholder="Owner Name" name="ownername" type="text"
+                    value="{{row[1]['OwnerName']}}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 form-group">
+                <h5 class="text-white"> Vehicle Number : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Vehicle Number" name="vehnumber" type="text"
+                    value="{{row[1]['VehNumber']}}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 form-group">
+                <h5 class="text-white"> Vehicle Type : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Vehicle Type " name="vehtype" type="text"
+                    value="{{row[1]['VehType']}}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 form-group">
+                <h5 class="text-white "> Image : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Image" type="text" name="image" value="{{row[1]['Image']}}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-4 form-group">
+                <h5 class="text-white "> Video: </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Video" type="text" name="video"
+                    value="{{row[0]['VideoName']}}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+            </div>
+            <div class="col-md-6 form-group">
+                <button style="margin-right:auto;" class="btn btn-secondary btn-block w-200p" type="reset">Cancel</button>
+            </div>
+        </div>
+        {%endfor%}
+    </form>
+
+    <!--
+{%else%}
+
+            <form action="/admin/insertchallan" method="post">
+                </br>
+                <h1 class="display-4 mb-10 text-center text-white">Add Challan</h1></br>
+
+                <input type="hidden" name="ChallanId" >
+                <div class="form-row">
+                    <div class="col-md-4 form-group">
+                        <h5 class="text-white" >  Owner Name : </h5>
+                    </div>
+
+                    <div class="col-md-5 form-group">
+
+                        <input class="form-control" placeholder="Owner Name" name="ownername" type="text" >
+                    </div>
+                </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 form-group">
+                            <h5 class="text-white r" >  Vehicle Number : </h5>
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <input class="form-control" placeholder="Vehicle Number" name="vehnumber" type="text" >
+                        </div>
+                    </div>
+
+                     <div class="form-row">
+                        <div class="col-md-4 form-group">
+                            <h5 class="text-white" >  Vehicle Type : </h5>
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <input class="form-control" placeholder="Vehicle Type " name="vehtype" type="text" >
+                        </div>
+                    </div>
+
+                     <div class="form-row">
+                        <div class="col-md-4 form-group">
+                              <h5 class="text-white " >  Image : </h5>
+                        </div>
+                        <div class="col-md-5 form-group">
+                             <input class="form-control" placeholder="Image" type="text" name="image" >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 form-group">
+                              <h5 class="text-white " >  Video: </h5>
+                        </div>
+                        <div class="col-md-5 form-group">
+                             <input class="form-control" placeholder="Video" type="text" name="video" >
+                        </div>
+                    </div>
+                     <div class="form-row">
+                        <button style="margin-left:auto;margin-right:auto;" class="btn btn-primary btn-block w-200p" type="submit" >Update</button>
+                    </div>
+
+                    </form>
+-->
+
+    {%endif%}
+
+</div>
+{%endblock%}

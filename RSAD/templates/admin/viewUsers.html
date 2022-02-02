@@ -1,0 +1,45 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+
+
+<div>
+	<table class="  table-dark table-bordered table-sm th" id="dataTable" width="100%" cellspacing="0">
+		<thead style="text-align: center;background: #1f292d;font-size: 18px;">
+			<tr>
+				<th>Police Station Name</th>
+				<th>Police Station Address</th>
+				<th>Username</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{%for row in registrationVOList%}
+			<tr>
+				<td>{{row[1]['policestationName']}}</td>
+				<td>{{row[1]['policestationAddress']}}</td>
+				<td>{{row[0]['loginUsername']}}</td>
+				<td style="text-align: center;">
+					<a href="/admin/editUser?registration_loginId={{row[1]['registration_loginId']}}">
+						<i class="fa fa-edit" style="font-size:20px;color: #88c241;"></i>
+					</a>
+					<a href="/admin/deleteUser?registration_loginId={{row[1]['registration_loginId']}}">
+						<i class="fa fa-trash" style="font-size:20px;color: #88c241;""></i>
+          			</a>
+          			{% if row[0]['loginStatus'] == "active" %}
+          			<a href=" /admin/blockUser?registration_loginId={{row[1]['registration_loginId']}}">
+						<i class="fa fa-lock" style="font-size:20px;color: #88c241;""></i>
+          			</a>
+          			{% elif row[0]['loginStatus'] == "inactive" %}
+          			<a href=" /admin/unblockUser?registration_loginId={{row[1]['registration_loginId']}}">
+						<i class="fa fa-unlock" style="font-size:20px;color: #88c241;""></i>
+          			</a>
+          {% endif %}
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+<style>
+    .checked {
+        color: gold;
+    }
+</style>
+
+<div>
+
+    <table class="  table-dark table-bordered table-sm th" id="dataTable" width="100%" cellspacing="0">
+        <thead style="text-align: center;background: #1f292d;font-size: 18px;">
+            <tr>
+                <th>Feedback Subject</th>
+                <th>Feedback Description</th>
+                <th>Feedback Rating</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Review</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for row in feedbackVOList%}
+            <tr>
+                <td>{{row['feedbackSubject']}}</td>
+                <td>{{row['feedbackDescription']}}</td>
+
+
+                <td>{% if row['feedbackRating'] == 1 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif row['feedbackRating'] == 2 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif row['feedbackRating'] == 3 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif row['feedbackRating'] == 4 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif row['feedbackRating'] == 5 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    {% endif %}
+
+                </td>
+
+                <td>{{row['feedbackDate']}}</td>
+                <td>{{row['feedbackTime']}}</td>
+
+                <td style="text-align: center;">
+                    {%if row['feedbackToLogin'] %}
+                    <span style='font-size:25px;color:#88c241'>&#10004;</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+
+
+
+<div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; width:80%;height:50%">
+
+    <form id="myForm" action="/user/postComplain" enctype="multipart/form-data" method="POST">
+        </br>
+        <h1 class="display-4 mb-10 text-center text-white">Post Complain</h1></br>
+        <div class="form-row">
+            <div class="col-md-2 form-group">
+                <h5 class="text-white "> Subject : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <input id="sub" class="form-control" placeholder="Subject" name="complainSubject" type="text" required>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-2 form-group">
+                <h5 class="text-white "> Description : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <textarea id="desc" name="complainDescription" cols="20" rows="4" placeholder="Description"
+                    required></textarea>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-2 form-group">
+                <h5 class="text-white "> File : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="btn-file " name="complainFile" type="file">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+            </div>
+            <div class="col-md-6 form-group">
+                <button style="margin-right:auto;" class="btn btn-secondary btn-block w-200p" type="reset">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+{%endblock%}

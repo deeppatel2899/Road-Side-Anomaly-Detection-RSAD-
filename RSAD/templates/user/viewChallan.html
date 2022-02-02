@@ -1,0 +1,42 @@
+{% extends "user/index.html" %} {% block content %}
+
+<div class=" table-dark table-bordered table-sm th">
+  <table
+    class=" table-dark table-bordered table-sm th"
+    id="dataTable"
+    width="100%"
+    cellspacing="0"
+  >
+    <thead style="text-align: center;background: #1f292d;font-size: 18px;">
+      <tr>
+        <th>Owner Name</th>
+        <th>Veh Number</th>
+        <th>Veh Type</th>
+        <th>Image</th>
+        <th>Video</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {%for row in detectionVOList%}
+      <tr>
+        <td>{{row[1]['OwnerName']}}</td>
+        <td>{{row[1]['VehNumber']}}</td>
+        <td>{{row[1]['VehType']}}</td>
+        <td>{{row[1]['Image']}}</td>
+        <td>{{row[0]['VideoName']}}</td>
+
+        <td>
+          <a href="/Admin/editChallan?ChallanId={{row[0]['ChallanId']}}"
+            ><i class="fa fa-edit" style="font-size:20px;color: #88c241;"></i
+          ></a>
+          <a href="#"
+            ><i class="fa fa-print" style="font-size:20px;color: #88c241;"></i
+          ></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

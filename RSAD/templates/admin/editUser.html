@@ -1,0 +1,88 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+
+
+<div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; width:80%;height:50%">
+    <form action="/admin/updateUser" method="post">
+        </br>
+        <h1 class="display-4 mb-10 text-center text-white">Edit Registration</h1></br>
+        {%for row in registrationVOList%}
+        <input type="hidden" name="registration_loginId" value="{{row[1]['registration_loginId']}}">
+        <input type="hidden" name="loginId" value="{{row[0]['loginId']}}">
+
+        <input type="hidden" name="registrationId" value="{{row[1]['registrationId']}}">
+        <div class="form-row">
+
+            <div class="col-md-3 form-group">
+                <h5 class="text-white"> Police station name : </h5>
+            </div>
+
+            <div class="col-md-5 form-group">
+
+                <input class="form-control" placeholder="Police station name" name="policestationName" type="text"
+                    value="{{row[1]['policestationName']}}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white r"> Police station code : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Police station code" name="policestationCode" type="text"
+                    value="{{row[1]['policestationCode']}}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white"> Police station Address : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Police station address" name="policestationAddress" type="text"
+                    value="{{row[1]['policestationAddress']}}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white "> Username : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Username" type="text" name="loginUsername"
+                    value="{{row[0]['loginUsername']}}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white "> Password : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Password" type="password" name="loginPassword"
+                    value="{{row[0]['loginPassword']}}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white"> Confirm Password : </h5>
+            </div>
+            <div class="col-md-5 form-group">
+                <input class="form-control" placeholder="Confirm Password" type="password"
+                    value="{{row[0]['loginPassword']}}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+            </div>
+            <div class="col-md-6 form-group">
+                <button href="/admin/viewUsers" style="margin-right:auto;" class="btn btn-secondary btn-block w-200p" >Cancel</button>
+            </div>
+        </div>
+        {%endfor%}
+    </form>
+</div>
+{%endblock%}

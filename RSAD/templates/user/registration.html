@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+Template Name: Mintos - Responsive Bootstrap 4 Admin Dashboard Template
+Author: Hencework
+Contact: https://hencework.ticksy.com/
+
+License: You must have a valid license purchased only from templatemonster to legally use the template for your project.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>RSAD Registration</title>
+    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+
+    <!-- Favicon
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    -->
+    <!-- Custom CSS -->
+
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-it">
+        <div class="loader-pendulums"></div>
+    </div>
+    <!-- /Preloader -->
+
+	<!-- HK Wrapper -->
+	<div class="hk-wrapper bg-dark">
+
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper hk-auth-wrapper bg-dark">
+            <header class="d-flex justify-content-end align-items-center">
+                <div class="btn-group btn-group-sm">
+                    <a href="#" class="btn btn-outline-secondary text-white">Help</a>
+                    <a href="#" class="btn btn-outline-secondary text-white">About Us</a>
+                </div>
+            </header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 pa-0">
+                        <div class="auth-form-wrap pt-xl-0 pt-70">
+                            <div class="auth-form w-xl-30 w-lg-55 w-sm-75 w-100">
+                                <form action="/user/insertRegistration" method="post">
+                                    <h1 class="display-4 mb-4 text-center text-white"><strong>Registration</strong></h1>
+                                    <!--<p class="mb-30 text-center">Create your account and start your free trial today</p>-->
+                                    <div class="form-row">
+                                        <div class="col-md-6 form-group">
+
+                                            <input class="form-control" placeholder="Police station name" name="policestationName" type="text" required>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input class="form-control" placeholder="Police station code" name="policestationCode" type="text" required>
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <input class="form-control" placeholder="Police station address" name="policestationAddress" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Username" type="text" name="loginUsername" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" type="password" name="loginPassword" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="Confirm Password" type="password" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-25">
+                                        <input class="custom-control-input text-white" id="same-address" type="checkbox" checked>
+                                        <label class="custom-control-label font-14 text-white" for="same-address">I have read and agree to the <a href=""><u>term and conditions</u></a></label>
+                                    </div>
+                                    <button class="btn btn-primary btn-block text-white" type="submit" >Register</button>
+                                    <!--<div class="option-sep">or</div>-->
+                                    <!--<div class="form-row">-->
+                                        <!--<div class="col-sm-6 mb-20">-->
+                                            <!--<button class="btn btn-indigo btn-block btn-wth-icon"> <span class="icon-label"><i class="fa fa-facebook"></i> </span><span class="btn-text">Login with facebook</span></button>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-sm-6 mb-20">-->
+                                            <!--<button class="btn btn-sky btn-block btn-wth-icon"> <span class="icon-label"><i class="fa fa-twitter"></i> </span><span class="btn-text">Login with Twitter</span></button>-->
+                                       <!-- </div>-->
+                                    <!--</div>-->
+
+                                    <p class="text-center text-white">Already have an account? <a href="#">Sign In</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.slimscroll.js')}}"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="{{ url_for('static', filename='js/dropdown-bootstrap-extended.js')}}"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="{{ url_for('static', filename='js/feather.min.js')}}"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src="{{ url_for('static', filename='js/toggles.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/toggle-data.js')}}"></script>
+
+    <!-- Init JavaScript -->
+    <script src="{{ url_for('static', filename='js/init.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+
+
+    <div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; width:80%;height:50%" >
+        <form action="/user/insertVideo" enctype="multipart/form-data"  method="POST">
+        </br>
+            <h1 class="display-4 mb-10 text-center text-white">Upload Video</h1></br>
+            <div class="form-row">
+                <div class="col-md-3 form-group" >
+                    <h5 class="text-white " style="margin-left:auto;" >  Select Crossroad : </h5>
+                </div>
+                <div class="col-md-4 form-group">
+                    <select class="form-control custom-select custom-select-sm" name="video_crossroadId">
+                    {%for row in crossroadVOList%}
+                        <option value="{{row[0]['crossroadId']}}">{{row[0]['crossroadName']}}</option>
+                    {%endfor%}
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 form-group">
+                    <h5 class="text-white " >  Select Video : </h5>
+                </div>
+                <div class="col-md-5 form-group">
+                    <input class="btn-file " name="video" type="file" >
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                    <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+                </div>
+                <div class="col-md-6 form-group">
+                    <button style="margin-right:auto;" class="btn btn-secondary btn-block w-200p" type="reset">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

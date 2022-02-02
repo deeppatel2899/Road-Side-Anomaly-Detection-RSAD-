@@ -1,0 +1,76 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+
+
+<div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; width:80%;height:50%">
+    {% if areaVOList %}
+    <form action="/admin/updateArea" method="post">
+        </br>
+        <h1 class="display-4 mb-10 text-center text-white">Edit Area</h1></br>
+        {%for row in areaVOList%}
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white "> Area Name : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <input type="hidden" name="areaId" value="{{row['areaId']}}">
+                <input class="form-control" placeholder="Area Name" name="areaName" type="text"
+                    value="{{row['areaName']}}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white "> Area Pincode : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <input class="form-control" placeholder="Area Pincode" name="areaPincode" type="text"
+                    value="{{row['areaPincode']}}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+            </div>
+            <div class="col-md-6 form-group">
+                <button href="/admin/viewArea" style="margin-right:auto;" class="btn btn-secondary btn-block w-200p">Cancel</button>
+            </div>
+        </div>
+        {%endfor%}
+
+    </form>
+    {%else%}
+
+    <form action="/admin/insertArea" method="post">
+        </br>
+        <h1 class="display-4 mb-10 text-center text-white">Add Area</h1></br>
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white "> Area Name : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <input class="form-control" placeholder="Area Name" name="areaName" type="text" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 form-group">
+                <h5 class="text-white ">Area Pincode : </h5>
+            </div>
+            <div class="col-md-4 form-group">
+                <input class="form-control" placeholder="Pincode" name="areaPincode" type="text" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <button style="margin-left:auto;" class="btn btn-primary btn-block w-200p" type="submit">Submit</button>
+            </div>
+            <div class="col-md-6 form-group">
+                <button style="margin-right:auto;" class="btn btn-secondary btn-block w-200p"
+                    type="reset">Cancel</button>
+            </div>
+        </div>
+        </form>
+        {%endif%}
+    </div>
+
+    {%endblock%}

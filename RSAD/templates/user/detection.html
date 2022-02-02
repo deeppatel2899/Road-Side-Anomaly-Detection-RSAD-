@@ -1,0 +1,354 @@
+{% extends "user/index.html" %}
+
+
+{% block content %}
+<div style="margin-left: auto ; margin-right: auto ;margin-top: auto ;margin-bottom:auto ; border: 5px solid #33CC33">
+    <img style="display: block; margin-left: auto; margin-right: auto;" align="middle"
+        src="{{ url_for('videoFeed') }}" />
+    <div class="form-row">
+        <div class="col-md-2 form-group">
+            <h5 class="text-white">Add Stop-Line :</h5>
+        </div>
+        <div class=" form-group">
+            <input id="stopline" class="form-check-input" type="checkbox" onclick="addstopline()" />
+        </div>
+        <div class="col-md-2 form-group">
+            <h5 class="text-white">Add middle-Line :</h5>
+        </div>
+        <div class=" form-group">
+            <input id="midline" class="form-check-input" type="checkbox" onclick="addmidline()" />
+        </div>
+        <div class="col-md-2 form-group">
+            <h5 class="text-white">Add Parking Area : </h5>
+        </div>
+        <div class="form-group">
+            <input id="parkarea" class="form-check-input" type="checkbox" onclick="addparkarea()" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div id="temp" style="display:block;" class="col-md-2 form-group">
+        </div>
+        <div id="stoplinediv" style="display: none;" class="col-md-2 form-group">
+            <div class="form-row">
+                <button onclick="setline('slluc')" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+                <button onclick="setline('slu')" style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+                <button onclick="setline('slruc')" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+            </div>
+            </br>
+
+            <div class="form-row">
+
+                <button onclick="setline('slll')" class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+
+                <button onclick="setline('sllr')" class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+
+                <button onclick="setline('slrl')" style="margin-left:auto;" class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+
+                <button onclick="setline('slrr')" class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+
+            </div>
+            </br>
+            <div class="form-row">
+                <button onclick="setline('slldc')" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+                <button onclick="setline('sld')" style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+                <button onclick="setline('slrdc')" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+            </div>
+
+        </div>
+        <div id="temp1" style="display:block;" class="col-md-2 form-group">
+        </div>
+        <div id="midlinediv" style="display: none;" class="col-md-2 form-group">
+            <div class="form-row">
+                <button onclick="setline('mlluc')" class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+                <button onclick="setline('mluu')" style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+                <button onclick="setline('mlruc')" class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+            </div>
+            <div class="form-row">
+
+                <button onclick="setline('mlud')" style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+
+            </div>
+            <div class="form-row">
+
+                <button onclick="setline('mll')" class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+
+
+                <button onclick="setline('mlr')" style="margin-left:auto;" class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+
+            </div>
+            <div class="form-row">
+
+                <button onclick="setline('mldu')" style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+
+            </div>
+            <div class="form-row">
+                <button onclick="setline('mlldc')" class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+                <button onclick="setline('mldd')" style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+                <button onclick="setline('mlrdc')" class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+            </div>
+
+
+        </div>
+        <div id="temp2" style="display:block;" class="col-md-2 form-group">
+        </div>
+        <div id="parkdiv" style="display: none;" class="col-md-2 form-group">
+            <div class="form-row">
+                <button style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+            </div>
+            <div class="form-row">
+                <button style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+            </div>
+            <div class="form-row">
+
+                <button class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+
+                <button class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+
+                <button style="margin-left:auto;" class="font-11">
+                    <i class="fa fa-angle-left">
+                    </i>
+                </button>
+
+                <button class="font-11">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </button>
+
+            </div>
+            <div class="form-row">
+                <button style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-up">
+                    </i>
+                </button>
+            </div>
+            <div class="form-row">
+                <button style="margin-left:auto;margin-right:auto;" class="font-11">
+                    <i class="fa fa-angle-down">
+                    </i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+    function addstopline() {
+        var cb = document.getElementById("stopline");
+        var x = document.getElementById("stoplinediv");
+        var t = document.getElementById("temp");
+
+        if (cb.checked == true) {
+            x.style.display = "block";
+            t.style.display = "none";
+
+        }
+        else {
+            x.style.display = "none";
+            t.style.display = "block";
+        }
+        var entry = { stopline: cb.checked };
+        fetch("/User/configure", {
+            method: "POST",
+            Credential: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({ "content-type": "application/json" })
+        }).then(function (response) {
+            if (response.status != 200) {
+                console.log("Error");
+            }
+            response.json().then(function (data) {
+                console.log(data);
+            });
+        });
+
+    }
+
+    function addmidline() {
+        var cb = document.getElementById("midline");
+        var x = document.getElementById("midlinediv");
+        var t1 = document.getElementById("temp1");
+
+
+        if (cb.checked == true) {
+            x.style.display = "block";
+            t1.style.display = "none";
+
+        }
+        else {
+            x.style.display = "none";
+            t1.style.display = "block";
+
+        }
+        var entry = { midline: cb.checked };
+        fetch("/User/configure", {
+            method: "POST",
+            Credential: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({ "content-type": "application/json" })
+        }).then(function (response) {
+            if (response.status != 200) {
+                console.log("Error");
+            }
+            response.json().then(function (data) {
+                console.log(data);
+            });
+        });
+
+    }
+
+    function addparkarea() {
+        var cb = document.getElementById("parkarea");
+        var x = document.getElementById("parkdiv");
+        var t2 = document.getElementById("temp2");
+
+
+        if (cb.checked == true) {
+            x.style.display = "block";
+            t2.style.display = "none";
+        }
+        else {
+            x.style.display = "none";
+            t2.style.display = "block";
+        }
+        var entry = { parkarea: cb.checked };
+        fetch("/User/configure", {
+            method: "POST",
+            Credential: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({ "content-type": "application/json" })
+        }).then(function (response) {
+            if (response.status != 200) {
+                console.log("Error");
+            }
+            response.json().then(function (data) {
+                console.log(data);
+            });
+        });
+
+
+    }
+
+    function setline(a) {
+        var entry = { sl: a };
+        fetch("/User/configure", {
+            method: "POST",
+            Credential: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({ "content-type": "application/json" })
+        }).then(function (response) {
+            if (response.status != 200) {
+                console.log("Error");
+            }
+            response.json().then(function (data) {
+                console.log(data);
+            });
+        });
+
+    }
+
+
+
+
+
+
+
+    function submit() {
+        var name = document.getElementById("sub");
+        var entry = { y: name.value };
+        fetch("/User/configure", {
+            method: "POST",
+            Credential: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({ "content-type": "application/json" })
+        }).then(function (response) {
+            if (response.status != 200) {
+                console.log("Error");
+            }
+            response.json().then(function (data) {
+                console.log(data);
+            });
+        });
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+
+
+<div>
+
+    <table class="  table-dark table-bordered table-sm th" id="dataTable" width="100%" cellspacing="0">
+        <thead style="text-align: center;background: #1f292d;font-size: 18px;">
+            <tr>
+                <th>Subject</th>
+                <th>Description</th>
+
+
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for row in complainVOList%}
+            <tr>
+                <td>{{row['complainSubject']}}</td>
+                <td>{{row['complainDescription']}}</td>
+                <td>{{row['complainDate']}}</td>
+                <td>{{row['complainTime']}}</td>
+
+                <td>
+
+                    {%if row['complainToLogin'] %}
+                    <a href="/user/viewReply?complainId={{row['complainId']}}"><i class="fa fa-envelope" style="font-size:20px;color: #88c241;"></i></a>
+                    {%else%}
+                    No Reply
+                    {%endif%}
+                    {%if row['complainFilepath'] %}
+                    <a href="/{{row['complainFilepath']}}" target="_blank"><i class="fa fa-file" style="font-size:20px;color: #88c241;"></i></a>
+                    {%endif%}
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

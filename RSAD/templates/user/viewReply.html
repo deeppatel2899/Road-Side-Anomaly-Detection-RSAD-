@@ -1,0 +1,42 @@
+{% extends "user/index.html" %}
+
+{% block content %}
+
+
+<div>
+
+    <table class="  table-dark table-bordered table-sm th" id="dataTable" width="100%" cellspacing="0">
+        <thead style="text-align: center;background: #1f292d;font-size: 18px;">
+            <tr>
+
+                <th>Reply Subject</th>
+                <th>Reply Description</th>
+                <th>Reply From</th>
+                <th>Reply Date</th>
+                <th>Reply Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for row in complainVOList%}
+            <tr>
+
+                <td>{{row['replySubject']}}</td>
+                <td>{{row['replyDescription']}}</td>
+                <td>{{row['complainToLogin']}} </td>
+                <td>{{row['replyDate']}}</td>
+                <td>{{row['replyTime']}}</td>
+
+                <td>
+                    {%if row['replyFilepath'] %}
+                    <a href="/{{row['replyFilepath']}}" target="_blank"><i class="fa fa-file" style="font-size:20px;color: #88c241;"></i></a>
+
+                    {%endif%}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

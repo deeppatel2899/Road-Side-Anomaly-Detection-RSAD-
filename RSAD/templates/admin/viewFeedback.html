@@ -1,0 +1,78 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<style>
+	.checked {
+		color: gold;
+	}
+
+</style>
+
+<div>
+
+	<table class="  table-dark table-bordered table-sm th" id="dataTable" width="100%" cellspacing="0">
+		<thead style="text-align: center;background: #1f292d;font-size: 18px;">
+			<tr>
+				<th>Feedback Subject</th>
+				<th>Feedback Description</th>
+				<th>Feedback Rating</th>
+
+				<th>Username</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{%for row in feedbackVOList%}
+			<tr>
+				<td>{{row['feedbackSubject']}}</td>
+				<td>{{row['feedbackDescription']}}</td>
+				<td>{% if row['feedbackRating'] == 1 %}
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					{% elif row['feedbackRating'] == 2 %}
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					{% elif row['feedbackRating'] == 3 %}
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					{% elif row['feedbackRating'] == 4 %}
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star"></span>
+					{% elif row['feedbackRating'] == 5 %}
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					{% endif %}
+
+				</td>
+
+				<td>{{row['feedbackFromLogin']}}</td>
+				<td>{{row['feedbackDate']}}</td>
+				<td>{{row['feedbackTime']}}</td>
+				<td><a href="/admin/deleteFeedback?feedbackId={{row['feedbackId']}}"><i class="fa fa-trash"
+							style="font-size:20px;color: #88c241;"></i></a>
+					<a href="/admin/reviewFeedback?feedbackId={{row['feedbackId']}}"><i class="fa fa-eye"
+							style="font-size:20px;color: #88c241;"></i></a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Admin Login</title>
+		<meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+
+		<!-- Toggles CSS -->
+		<link href="{{ url_for('static', filename='css/toggles.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ url_for('static', filename='css/themes/toggles-light.css')}}" rel="stylesheet" type="text/css">
+
+		<!-- Custom CSS -->
+		<link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+
+		<!-- HK Wrapper -->
+		<div class="hk-wrapper bg-dark">
+
+			<!-- Main Content -->
+			<div class="hk-pg-wrapper hk-auth-wrapper bg-dark">
+				<header class="d-flex justify-content-end align-items-center">
+					<div class="btn-group btn-group-sm">
+						<a href="#" class="btn btn-outline-secondary text-white">Help</a>
+						<a href="#" class="btn btn-outline-secondary text-white">About Us</a>
+					</div>
+				</header>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xl-12 pa-0">
+							<div class="auth-form-wrap pt-xl-0 pt-70">
+								<div class="auth-form w-xl-30 w-lg-55 w-sm-75 w-100">
+<!--
+									<a class="auth-brand text-center d-block mb-20" href="#">
+										<img class="brand-img" src="{{ url_for('static', filename='img/logo-light.png')}}" alt="brand"/>
+									</a>
+-->
+									<form action="/validateLogin" method="POST">
+										{%if error%}
+										<h5 class=" text-center text-red mb-4"> <strong> {{error}} </strong></h5>
+{%endif%}
+										<h1 class="display-4 text-center mb-4 text-white" ><strong>Admin</strong></h1>
+
+										<div class="form-group">
+											<input class="form-control" placeholder="Username" type="text" name="loginUsername">
+										</div>
+										<div class="form-group">
+											<div class="input-group">
+												<input class="form-control" placeholder="Password" type="password" name="loginPassword">
+												<div class="input-group-append">
+													<span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
+												</div>
+											</div>
+										</div>
+										<div class="custom-control custom-checkbox mb-25">
+											<input class="custom-control-input text-white" id="same-address" type="checkbox" checked>
+											<label class="custom-control-label font-14 text-white" for="same-address">Keep me logged in</label>
+										</div>
+										<button class="btn btn-primary btn-block text-white" type="submit">Login</button>
+										<!--p class="font-14 text-center mt-15 text-white">Having trouble logging in?</p-->
+<!--
+										<div class="option-sep text-white">or</div>
+										<div class="form-row">
+										<p class="text-center text-white">Do have an account yet? <a href="#">Sign Up</a></p>
+-->
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Main Content -->
+
+		</div>
+		<!-- /HK Wrapper -->
+
+		<!-- JavaScript -->
+
+		<!-- jQuery -->
+		<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+		<!-- Slimscroll JavaScript -->
+		<script src="{{ url_for('static', filename='js/jquery.slimscroll.js')}}"></script>
+
+		<!-- Fancy Dropdown JS -->
+		<script src="{{ url_for('static', filename='js/dropdown-bootstrap-extended.js')}}"></script>
+
+		<!-- FeatherIcons JavaScript -->
+		<script src="{{ url_for('static', filename='js/feather.min.js')}}"></script>
+
+		<!-- Init JavaScript -->
+		<script src="{{ url_for('static', filename='js/init.js')}}"></script>
+	</body>
+</html>
