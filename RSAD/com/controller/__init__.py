@@ -1,0 +1,10 @@
+import RSAD.com.controller.MainController
+import RSAD.com.controller.DetectionController
+import RSAD.com.controller.UploadvideoController
+import RSAD.com.controller.CrossroadController
+import RSAD.com.controller.AreaController
+import RSAD.com.controller.RegistrationController
+import RSAD.com.controller.LoginController
+import RSAD.com.controller.ComplainController
+import RSAD.com.controller.FeedbackController
+print("in controller")
